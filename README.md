@@ -21,16 +21,18 @@ import 'w-cesium-basemap';
 -   使用
 
 ```js
+import { TdtImageryProvider } from 'w-cesium-basemap';
+// 加载天地图
 let imgLayer = {
 	style: 'default',
-	layer: 'img_w',
+	layer: 'img_w', //影像墨卡托投影底图
 	type: 'img',
 	name: '图层',
 	key: 'you key',
 };
 viewer.imageryLayers.addImageryProvider(new TdtImageryProvider(imgLayer));
 var ciaLayer = {
-	layer: 'cia_w',
+	layer: 'cia_w', //影像注记墨卡托投影
 	style: 'default',
 	type: 'cia',
 	key: 'you key',
