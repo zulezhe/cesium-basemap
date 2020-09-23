@@ -1,4 +1,4 @@
-# cesium-basemap
+# w-cesium-basemap
 
 ## 描述
 
@@ -9,13 +9,13 @@ cesium 的底图加载插件
 -   安装
 
 ```powershell
-    npm install cesium-basemap
+    npm install w-cesium-basemap
 ```
 
 -   注册
 
 ```javascript
-import 'cesium-basemap';
+import 'w-cesium-basemap';
 ```
 
 -   使用

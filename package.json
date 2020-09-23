@@ -1,5 +1,5 @@
 {
-	"name": "cesium-basemap",
+	"name": "w-cesium-basemap",
 	"version": "1.0.0",
 	"description": "cesium底图服务",
 	"keywords": [
@@ -10,9 +10,9 @@
 	"private": false,
 	"author": "wangchaoxu",
 	"license": "MIT",
-	"main": "dist/cesium-basemap.umd.js",
-	"module": "dist/cesium-basemap.esm.js",
-	"unpkg": "dist/cesium-basemap.min.js",
+	"main": "dist/w-cesium-basemap.umd.js",
+	"module": "dist/w-cesium-basemap.esm.js",
+	"unpkg": "dist/w-cesium-basemap.min.js",
 	"scripts": {
 		"dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.es.js --watch",
 		"build": "cross-env NODE_ENV=production npm run build:browser && npm run build:es && npm run build:umd",
