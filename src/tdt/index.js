@@ -1,17 +1,47 @@
+/**
+ * 天地图底图类
+ * @extends Cesium.WebMapTileServiceImageryProvider
+ */
 class TdtImageryProvider extends Cesium.WebMapTileServiceImageryProvider {
-	constructor(options = {}) {
-		console.log(options);
-		super({
-			url: `http://t{s}.tianditu.gov.cn/${options.layer}/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=${options.type}&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=${options.key}`,
-			layer: options.layer || 'img_c',
-			tileMatrixSetID: 'c',
-			style: 'default',
-			format: 'tiles',
-			tileMatrixSetID: 'GoogleMapsCompatible',
-			subdomains: ['0', '1', '2', '3', '4', '5', '6', '7'],
-			minimumLevel: 0,
-			maximumLevel: 18,
-		});
-	}
+  /**
+   * 添加天地图底图
+   * @param {object} options
+   * @param {string} options.type=img 底图类型 影像底图 img 矢量底图 vec 经纬度投影 c 墨卡托投影 w 默认 img 参考 http://lbs.tianditu.gov.cn/server/MapService.html
+   * @param {string} options.projMode=w 投影方式 经纬度投影 c 墨卡托投影 w 默认 w 参考 http://lbs.tianditu.gov.cn/server/MapService.html
+   * @param {string} options.key  天地图key 去官网申请
+   * @param {string} options.minimumLevel=4
+   * @param {string} options.maximumLevel=18
+   * @example
+   *
+   *  var layer = new TdtImageryProvider({
+   *        type: "img",
+   *        projMode: "w",
+   *        key: "你的key",
+   *        minimumLevel: 4,
+   *        maximumLevel: 18
+   *    })
+   *  viewer.imageryLayers.addImageryProvider(layer);
+   */
+  constructor(
+    options = {
+      type: "img",
+      projMode: "w",
+      key: "",
+      minimumLevel: 4,
+      maximumLevel: 18,
+    }
+  ) {
+    let type = options.type + "_" + options.projMode;
+    let layer = options.type;
+    super({
+      url: `http://t{s}.tianditu.gov.cn/${type}/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=${layer}&tileMatrixSet=${options.projMode}&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=${options.key}`,
+      layer: type,
+      style: "default",
+      format: "tiles",
+      subdomains: ["0", "1", "2", "3", "4", "5", "6", "7"],
+      minimumLevel: 0,
+      maximumLevel: 18,
+    });
+  }
 }
 export default TdtImageryProvider;

@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
-docs
-example
+# docs
+# example
 # local env files
 .env.local
 .env.*.local
