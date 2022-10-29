@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>amap/index.js - zu-cesium-basemap</title>
+    <title>osm/index.js - zu-cesium-basemap</title>
     
     <meta name="description" content="cesium公开底图服类,更方便添加/切换底图" />
     
@@ -46,7 +46,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">amap/index.js</h1>
+    <h1 class="page-title">osm/index.js</h1>
     
 
     
@@ -58,48 +58,43 @@
         <article>
             <pre class="prettyprint source linenums"><code>/*
  * @Author: zulezhe
- * @Date: 2021-07-08 08:36:43
+ * @Date: 2022-07-20 14:11:20
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-07-20 14:10:53
+ * @LastEditTime: 2022-07-20 15:31:30
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
  */
 /**
- * 高德影像底图类
- * @extends Cesium.UrlTemplateImageryProvider
+ * OSM底图类
+ * @extends Cesium.OpenStreetMapImageryProvider
  */
-class AmapImageryProvider extends Cesium.UrlTemplateImageryProvider {
+ class OSMImageryProvider extends Cesium.OpenStreetMapImageryProvider {
   /**
-   * 添加高德地图底图
+   * 添加 OSM 地图底图
    * @param {object} options 
-   * @param {string} options.type=img 底图类型 影像底图 img 矢量底图 vec 默认 img
+   * @param {string} options.type=vec 底图类型  矢量底图 vec 暗色矢量 vec_dark 
    * @param {string} options.minimumLevel=4
    * @param {string} options.maximumLevel=8
    * @example
    * 
-   *  var layer = new AmapImageryProvider({
+   *  var layer = new OSMImageryProvider({
    *        type: "img",
    *        minimumLevel: 4,
    *        maximumLevel: 18
    *    })
    *  viewer.imageryLayers.addImageryProvider(layer);
    */
-  constructor(options = {
-    type: "img",
-    minimumLevel: 4,
-    maximumLevel: 18
-  }) {
+   constructor(options) {
+     let VEC_URL = `https://a.tile.openstreetmap.org/`
+     let DARK_URL = `https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png`
+     let LIGHT_URL=`https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png`
     super({
-      url: `https://${options.type==='img'?'webst0{s}':'webrd02'}.is.autonavi.com/appmaptile?lang=zh_cn&amp;size=1&amp;scale=1&amp;style=${
-        options.type === "img" ? 6 : 8
-      }&amp;x={x}&amp;y={y}&amp;z={z}`,
-      subdomains: ["1", "2", "3", "4"],
-      minimumLevel: 3,
-      maximumLevel: 18,
+      url: options.type === 'vec_dark' ? DARK_URL :options.type === 'vec_light'?LIGHT_URL: VEC_URL,
+      subdomains: ["a", "b", "c", "d"],
     });   
   }
 }
-export default AmapImageryProvider;
+export default OSMImageryProvider;
 </code></pre>
         </article>
     </section>

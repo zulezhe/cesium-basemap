@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>geoq/index.js - zu-cesium-basemap</title>
+    <title>tdt/index.js - zu-cesium-basemap</title>
     
     <meta name="description" content="cesium公开底图服类,更方便添加/切换底图" />
     
@@ -46,7 +46,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">geoq/index.js</h1>
+    <h1 class="page-title">tdt/index.js</h1>
     
 
     
@@ -56,41 +56,53 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*
- * @Author: zulezhe
- * @Date: 2022-07-20 14:11:20
- * @LastEditors: zulezhe
- * @LastEditTime: 2022-07-20 15:03:31
- * @Path: https://gitee.com/zulezhe/
- * @Description: 
+            <pre class="prettyprint source linenums"><code>/**
+ * 天地图底图类
+ * @extends Cesium.WebMapTileServiceImageryProvider
  */
-/**
- * geoq底图类
- * @extends Cesium.UrlTemplateImageryProvider
- */
- class GeoqImageryProvider extends Cesium.UrlTemplateImageryProvider {
+class TdtImageryProvider extends Cesium.WebMapTileServiceImageryProvider {
   /**
-   * 添加geoq地图底图
-   * @param {object} options 
-   * @param {string} options.type=img 底图类型 影像底图 img 矢量底图 vec 默认 img
+   * 添加天地图底图
+   * @param {object} options
+   * @param {string} options.type=img 底图类型 影像底图 img 矢量底图 vec 经纬度投影 c 墨卡托投影 w 默认 img 参考 http://lbs.tianditu.gov.cn/server/MapService.html
+   * @param {string} options.projMode=w 投影方式 经纬度投影 c 墨卡托投影 w 默认 w 参考 http://lbs.tianditu.gov.cn/server/MapService.html
+   * @param {string} options.key  天地图key 去官网申请
    * @param {string} options.minimumLevel=4
-   * @param {string} options.maximumLevel=8
+   * @param {string} options.maximumLevel=18
    * @example
-   * 
-   *  var layer = new GeoqImageryProvider({
+   *
+   *  var layer = new TdtImageryProvider({
    *        type: "img",
+   *        projMode: "w",
+   *        key: "你的key",
    *        minimumLevel: 4,
    *        maximumLevel: 18
    *    })
    *  viewer.imageryLayers.addImageryProvider(layer);
    */
-   constructor() {
+  constructor(
+    options = {
+      type: "img",
+      projMode: "w",
+      key: "",
+      minimumLevel: 4,
+      maximumLevel: 18,
+    }
+  ) {
+    let type = options.type + "_" + options.projMode;
+    let layer = options.type;
     super({
-      url: "https://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer/tile/{z}/{y}/{x}",
-    });   
+      url: `http://t{s}.tianditu.gov.cn/${type}/wmts?service=wmts&amp;request=GetTile&amp;version=1.0.0&amp;LAYER=${layer}&amp;tileMatrixSet=${options.projMode}&amp;TileMatrix={TileMatrix}&amp;TileRow={TileRow}&amp;TileCol={TileCol}&amp;style=default&amp;format=tiles&amp;tk=${options.key}`,
+      layer: type,
+      style: "default",
+      format: "tiles",
+      subdomains: ["0", "1", "2", "3", "4", "5", "6", "7"],
+      minimumLevel: 0,
+      maximumLevel: 18,
+    });
   }
 }
-export default GeoqImageryProvider;
+export default TdtImageryProvider;
 </code></pre>
         </article>
     </section>

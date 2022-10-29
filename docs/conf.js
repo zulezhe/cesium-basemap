@@ -1,3 +1,11 @@
+/*
+ * @Author: zulezhe
+ * @Date: 2022-10-29 15:29:13
+ * @LastEditors: zulezhe
+ * @LastEditTime: 2022-10-29 15:58:25
+ * @Path: https://gitee.com/zulezhe/
+ * @Description: 
+ */
 'use strict';
 module.exports = {
   tags: {
@@ -33,7 +41,7 @@ module.exports = {
   opts: {
     template: 'node_modules/docdash',
     encoding: 'utf8',
-    destination: './docs/out/',
+    destination: './docs/api/',
     recurse: true,
     verbose: true,
   },

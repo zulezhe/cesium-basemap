@@ -16,12 +16,12 @@
   "unpkg": "dist/zu-cesium-basemap.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.es.js --watch",
-    "build": "cross-env NODE_ENV=production npm run build:browser && npm run build:es && npm run build:umd",
+    "build": "cross-env NODE_ENV=production npm run build:browser && npm run build:es && npm run build:umd && npm run doc",
     "test": "npm run test:unit",
     "build:browser": "rollup --config build/rollup.config.browser.js",
     "build:es": "rollup --config build/rollup.config.es.js",
     "build:umd": "rollup --config build/rollup.config.umd.js",
-    "doc": "jsdoc -c ./docs/conf.js"
+    "doc": "cp -r dist docs && jsdoc -c ./docs/conf.js"
   },
   "repository": {
     "type": "git",

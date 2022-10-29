@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>arcgis/index.js - zu-cesium-basemap</title>
+    <title>geoq/index.js - zu-cesium-basemap</title>
     
     <meta name="description" content="cesium公开底图服类,更方便添加/切换底图" />
     
@@ -46,7 +46,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">arcgis/index.js</h1>
+    <h1 class="page-title">geoq/index.js</h1>
     
 
     
@@ -60,24 +60,24 @@
  * @Author: zulezhe
  * @Date: 2022-07-20 14:11:20
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-07-20 14:14:53
+ * @LastEditTime: 2022-07-20 15:03:31
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
  */
 /**
- * arcgis底图类
- * @extends Cesium.ArcGisMapServerImageryProvider
+ * geoq底图类
+ * @extends Cesium.UrlTemplateImageryProvider
  */
- class ArcgisImageryProvider extends Cesium.ArcGisMapServerImageryProvider {
+ class GeoqImageryProvider extends Cesium.UrlTemplateImageryProvider {
   /**
-   * 添加arcgis地图底图
+   * 添加geoq地图底图
    * @param {object} options 
    * @param {string} options.type=img 底图类型 影像底图 img 矢量底图 vec 默认 img
    * @param {string} options.minimumLevel=4
    * @param {string} options.maximumLevel=8
    * @example
    * 
-   *  var layer = new ArcgisImageryProvider({
+   *  var layer = new GeoqImageryProvider({
    *        type: "img",
    *        minimumLevel: 4,
    *        maximumLevel: 18
@@ -85,14 +85,12 @@
    *  viewer.imageryLayers.addImageryProvider(layer);
    */
    constructor() {
-     let IMG_URL = `https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer`;
-     let STREET_URL=`https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer`
     super({
-      url: options.type==="img"?IMG_URL:STREET_URL
+      url: "https://map.geoq.cn/arcgis/rest/services/ChinaOnlineStreetPurplishBlue/MapServer/tile/{z}/{y}/{x}",
     });   
   }
 }
-export default ArcgisImageryProvider;
+export default GeoqImageryProvider;
 </code></pre>
         </article>
     </section>

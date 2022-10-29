@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>bmap/index.js - zu-cesium-basemap</title>
+    
+    <meta name="description" content="cesium公开底图服类,更方便添加/切换底图" />
+    
+        <meta name="keywords" content="cesium, zu-cesium-basemap,cesium底图" />
+        <meta name="keyword" content="cesium, zu-cesium-basemap,cesium底图" />
+    
+    
+    
+    <meta property="og:title" content="zu-cesium-basemap"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://cloud.githubusercontent.com/assets/447956/13398144/4dde7f36-defd-11e5-8909-1a9013302cb9.png"/>
+    <meta property="og:site_name" content="zu-cesium-basemap"/>
+    <meta property="og:url" content="http://zulezhe.github.io/zu-cesium-basemap/"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/zulezhe/zu-cesium-basemap" target="_blank" class="menu-item" id="repository" >源码</a></h2><h3>Classes</h3><ul><li><a href="AmapImageryProvider.html">AmapImageryProvider</a></li><li><a href="ArcgisImageryProvider.html">ArcgisImageryProvider</a></li><li><a href="BmapImageryProvider.html">BmapImageryProvider</a><ul class='methods'><li data-type='method' style='display: none;'><a href="BmapImageryProvider.html#requestImage">requestImage</a></li></ul></li><li><a href="GeoqImageryProvider.html">GeoqImageryProvider</a></li><li><a href="MapboxImageryProvider.html">MapboxImageryProvider</a></li><li><a href="OSMImageryProvider.html">OSMImageryProvider</a></li><li><a href="TdtImageryProvider.html">TdtImageryProvider</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">bmap/index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * 添加百度底图服务类
+ */
+class BmapImageryProvider {
+  /**
+   * 创建百度底图服务
+   * @param  {object} options     创建百度底图的配置项
+   * @param {string} options.type=img 底图类型 影像底图 img 矢量底图 vec
+   * @example
+   * 
+   *  var layer = new BmapImageryProvider({
+   *        type: "img",
+   *        minimumLevel: 4,
+   *        maximumLevel: 18
+   *  })
+   *  viewer.imageryLayers.addImageryProvider(layer);
+   */
+  constructor(options = {}) {
+    const IMG_URL = 'http://shangetu{s}.map.bdimg.com/it/u=x={x};y={y};z={z};v=009;type=sate&amp;fm=46';
+    const VEC_URL = 'http://online{s}.map.bdimg.com/tile/?qt=tile&amp;x={x}&amp;y={y}&amp;z={z}&amp;styles=sl&amp;v=020';
+    const CUSTOM_URL = 'http://api{s}.map.bdimg.com/customimage/tile?&amp;x={x}&amp;y={y}&amp;z={z}&amp;scale=1&amp;customid={style}';
+    this._url = options.type === 'img' ? IMG_URL : options.type === 'vec' ? VEC_URL : CUSTOM_URL;
+    this._tileWidth = 256;
+    this._tileHeight = 256;
+    this._maximumLevel = 18;
+    this._tilingScheme = new Cesium.WebMercatorTilingScheme({
+      rectangleSouthwestInMeters: new Cesium.Cartesian2(-33554054, -33746824),
+      rectangleNortheastInMeters: new Cesium.Cartesian2(33554054, 33746824),
+    });
+    this._rectangle = this._tilingScheme.rectangle;
+    this._credit = undefined;
+    this._type = options.type || 'normal';
+  }
+  get url() {
+    return this._url;
+  }
+  get token() {
+    return this._token;
+  }
+  get tileWidth() {
+    if (!this.ready) {
+      throw new Cesium.DeveloperError('在影像提供者准备就绪之前，不得调用 tileWidth.');
+    }
+    return this._tileWidth;
+  }
+
+  get tileHeight() {
+    if (!this.ready) {
+      throw new Cesium.DeveloperError('在影像提供者准备就绪之前，不得调用 tileHeight.');
+    }
+    return this._tileHeight;
+  }
+
+  get maximumLevel() {
+    if (!this.ready) {
+      throw new Cesium.DeveloperError('最大在影像提供程序准备就绪之前不得调用级别.');
+    }
+    return this._maximumLevel;
+  }
+
+  get minimumLevel() {
+    if (!this.ready) {
+      throw new Cesium.DeveloperError('最小值在影像提供者准备就绪之前不得调用级别.');
+    }
+    return 0;
+  }
+
+  get tilingScheme() {
+    if (!this.ready) {
+      throw new Cesium.DeveloperError('在影像提供程序准备就绪之前，不得调用切片方案.');
+    }
+    return this._tilingScheme;
+  }
+
+  get rectangle() {
+    if (!this.ready) {
+      throw new Cesium.DeveloperError('在影像提供程序准备就绪之前，不得调用矩形.');
+    }
+    return this._rectangle;
+  }
+
+  get ready() {
+    return !!this._url;
+  }
+
+  get credit() {
+    return this._credit;
+  }
+
+  get hasAlphaChannel() {
+    return true;
+  }
+  getTileCredits(x, y, level) {}
+
+  /**
+   * 图片请求
+   * @param  {} x
+   * @param  {} y
+   * @param  {} level
+   * @exception {DeveloperError} 在图像提供者准备好之前不得调用 requestImage
+   * @returns {object} 加载底图后的返回对象
+   */
+  requestImage(x, y, level) {
+    if (!this.ready) {
+      throw new Cesium.DeveloperError('请求在影像提供程序准备就绪之前不得调用影像.');
+    }
+    let xTiles = this._tilingScheme.getNumberOfXTilesAtLevel(level);
+    let yTiles = this._tilingScheme.getNumberOfYTilesAtLevel(level);
+    let url = this._url
+      .replace('{x}', x - xTiles / 2)
+      .replace('{y}', yTiles / 2 - y - 1)
+      .replace('{z}', level)
+      .replace('{s}', 1)
+      .replace('{style}', this._type);
+    return Cesium.ImageryProvider.loadImage(this, url);
+  }
+}
+export default BmapImageryProvider;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+    <script src="./index.js"></script>
+    
+</body>
+</html>
