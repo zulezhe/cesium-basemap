@@ -57,14 +57,7 @@ const viewer = new Cesium.Viewer("cesium-container", {
   }),
 });
 ```
-
-<iframe  
-  height=100% 
-  width=800
-  src="./osmmap.html"  
-  frameborder=0  
-  allowfullscreen>
-</iframe>
+[![](./static//images/osm.jpg#=1000x800)](https://zulezhe.github.io/zu-cesium-basemap/osmmap.html)
 
 - 添加单张图片底图
 
