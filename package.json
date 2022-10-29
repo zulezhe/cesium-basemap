@@ -21,11 +21,11 @@
     "build:browser": "rollup --config build/rollup.config.browser.js",
     "build:es": "rollup --config build/rollup.config.es.js",
     "build:umd": "rollup --config build/rollup.config.umd.js",
-    "doc": "cp -r dist docs && jsdoc -c ./docs/conf.js"
+    "doc": "cp -r dist docs && cp README.md docs/README.md && jsdoc -c ./docs/conf.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zulezhe/zu-cesium-basemap.git"
+    "url": "https://github.com/zulezhe/zu-cesium-basemap.git" 
   },
   "bugs": {
     "url": "https://github.com/zulezhe/zu-cesium-basemap/issues"
