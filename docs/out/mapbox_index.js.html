@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>arcgis/index.js - zu-cesium-basemap</title>
+    <title>mapbox/index.js - zu-cesium-basemap</title>
     
     <meta name="description" content="cesium公开底图服类,更方便添加/切换底图" />
     
@@ -46,7 +46,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">arcgis/index.js</h1>
+    <h1 class="page-title">mapbox/index.js</h1>
     
 
     
@@ -60,39 +60,43 @@
  * @Author: zulezhe
  * @Date: 2022-07-20 14:11:20
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-07-20 14:14:53
+ * @LastEditTime: 2022-07-20 15:22:12
  * @Path: https://gitee.com/zulezhe/
- * @Description: 
+ * @Description:
  */
 /**
- * arcgis底图类
- * @extends Cesium.ArcGisMapServerImageryProvider
+ * geoq底图类
+ * @extends Cesium.UrlTemplateImageryProvider
  */
- class ArcgisImageryProvider extends Cesium.ArcGisMapServerImageryProvider {
+class MapboxImageryProvider extends Cesium.MapboxStyleImageryProvider {
   /**
-   * 添加arcgis地图底图
-   * @param {object} options 
-   * @param {string} options.type=img 底图类型 影像底图 img 矢量底图 vec 默认 img
-   * @param {string} options.minimumLevel=4
-   * @param {string} options.maximumLevel=8
+   * 添加geoq地图底图
+   * @param {object} options
+   * @param {string} options.username 你的账号名称
+   * @param {string} options.styleId  你的地图Id
+   * @param {string} options.accessToken 你的accessToken
    * @example
-   * 
-   *  var layer = new ArcgisImageryProvider({
+   *
+   *  var layer = new MapboxImageryProvider({
    *        type: "img",
    *        minimumLevel: 4,
    *        maximumLevel: 18
    *    })
    *  viewer.imageryLayers.addImageryProvider(layer);
    */
-   constructor() {
-     let IMG_URL = `https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer`;
-     let STREET_URL=`https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer`
+  constructor(options = {
+    username: "你的账号名称",
+    styleId: "你的地图Id",
+    accessToken: "你的accessToken",
+  }) {
     super({
-      url: options.type==="img"?IMG_URL:STREET_URL
-    });   
+      username: options.username,
+      styleId: options.styleId,
+      accessToken: options.accessToken,
+    });
   }
 }
-export default ArcgisImageryProvider;
+export default MapboxImageryProvider;
 </code></pre>
         </article>
     </section>

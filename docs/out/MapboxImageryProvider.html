@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>ArcgisImageryProvider - zu-cesium-basemap</title>
+    <title>MapboxImageryProvider - zu-cesium-basemap</title>
     
     <meta name="description" content="cesium公开底图服类,更方便添加/切换底图" />
     
@@ -46,7 +46,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">ArcgisImageryProvider</h1>
+    <h1 class="page-title">MapboxImageryProvider</h1>
     
 
     
@@ -59,10 +59,10 @@
 <header>
     
         <h2>
-        ArcgisImageryProvider
+        MapboxImageryProvider
         </h2>
         
-            <div class="class-description usertext"><p>arcgis底图类</p></div>
+            <div class="class-description usertext"><p>geoq底图类</p></div>
         
     
 </header>
@@ -77,7 +77,7 @@
     <h2>Constructor</h2>
     
 
-    <h4 class="name" id="ArcgisImageryProvider"><span class="type-signature"></span>new ArcgisImageryProvider<span class="signature">(options)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="MapboxImageryProvider"><span class="type-signature"></span>new MapboxImageryProvider<span class="signature">(options)</span><span class="type-signature"></span></h4>
 
     
 
@@ -89,7 +89,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="arcgis_index.js.html">arcgis/index.js</a>, <a href="arcgis_index.js.html#line13">line 13</a>
+        <a href="mapbox_index.js.html">mapbox/index.js</a>, <a href="mapbox_index.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -129,7 +129,7 @@
 
 
 <div class="description usertext">
-    <p>添加arcgis地图底图</p>
+    <p>添加geoq地图底图</p>
 </div>
 
 
@@ -142,7 +142,7 @@
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>var layer = new ArcgisImageryProvider({       type: "img",       minimumLevel: 4,       maximumLevel: 18   }) viewer.imageryLayers.addImageryProvider(layer);</code></pre>
+    <pre class="prettyprint"><code>var layer = new MapboxImageryProvider({       type: "img",       minimumLevel: 4,       maximumLevel: 18   }) viewer.imageryLayers.addImageryProvider(layer);</code></pre>
 
 
 
@@ -204,8 +204,6 @@
         
 
         
-        <th>Default</th>
-        
 
         <th class="last">Description</th>
     </tr>
@@ -216,7 +214,7 @@
 
         <tr>
             
-                <td class="name"><code>type</code></td>
+                <td class="name"><code>username</code></td>
             
 
             <td class="type">
@@ -231,21 +229,15 @@
             
 
             
-                <td class="default">
-                
-                    <code>img</code>
-                
-                </td>
-            
 
-            <td class="description last"><p>底图类型 影像底图 img 矢量底图 vec 默认 img</p></td>
+            <td class="description last"><p>你的账号名称</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>minimumLevel</code></td>
+                <td class="name"><code>styleId</code></td>
             
 
             <td class="type">
@@ -260,21 +252,15 @@
             
 
             
-                <td class="default">
-                
-                    <code>4</code>
-                
-                </td>
-            
 
-            <td class="description last"></td>
+            <td class="description last"><p>你的地图Id</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>maximumLevel</code></td>
+                <td class="name"><code>accessToken</code></td>
             
 
             <td class="type">
@@ -289,14 +275,8 @@
             
 
             
-                <td class="default">
-                
-                    <code>8</code>
-                
-                </td>
-            
 
-            <td class="description last"></td>
+            <td class="description last"><p>你的accessToken</p></td>
         </tr>
 
     
@@ -339,7 +319,7 @@
 
 
     <ul>
-        <li>Cesium.ArcGisMapServerImageryProvider</li>
+        <li>Cesium.UrlTemplateImageryProvider</li>
     </ul>
 
 

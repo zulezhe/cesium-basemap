@@ -1,10 +1,15 @@
+/*
+ * @Author: zulezhe
+ * @Date: 2022-10-29 15:29:13
+ * @LastEditors: zulezhe
+ * @LastEditTime: 2022-10-29 15:47:45
+ * @Path: https://gitee.com/zulezhe/
+ * @Description: 
+ */
 import babel from 'rollup-plugin-babel';
 import resolve from 'rollup-plugin-node-resolve';
 import cjs from 'rollup-plugin-commonjs';
 import replace from 'rollup-plugin-replace';
-import css from 'rollup-plugin-css-only';
-import fs from 'fs';
-
 const config = require('../package.json');
 
 const { name, version } = config;
