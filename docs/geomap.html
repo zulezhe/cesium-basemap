@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-07-20 09:02:55
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-11-02 22:49:22
+ * @LastEditTime: 2022-11-02 23:05:16
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
@@ -29,20 +29,14 @@
 <body>
   <div id="cesium-container"></div>
   <script type="module">
-    import { OSMImageryProvider } from "./dist/zu-cesium-basemap.esm.js";
+    import { GeoqImageryProvider } from "./dist/zu-cesium-basemap.esm.js";
     const viewer = new Cesium.Viewer("cesium-container", {
-      imageryProvider: new OSMImageryProvider({
-        type: 'vec'
+      imageryProvider: new GeoqImageryProvider({
+        type: "img",
+        minimumLevel: 4,
+        maximumLevel: 18,
       }),
-    })
-    // var layer = new ZuCesiumBasemap.TdtImageryProvider({
-    //   type: "img",
-    //   projMode: "w",
-    //   key: "7466262a52e39c32a1f58493031093a7",
-    //   minimumLevel: 4,
-    //   maximumLevel: 18
-    // })
-    // viewer.imageryLayers.addImageryProvider(layer);
+    });
   </script>
 </body>
 
