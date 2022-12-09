@@ -1,3 +1,13 @@
+/*
+ * @Author: zulezhe
+ * @Date: 2021-07-08 08:36:43
+ * @LastEditors: zulezhe
+ * @LastEditTime: 2022-12-09 14:03:15
+ * @Path: https://gitee.com/zulezhe/
+ * @Description: 
+ */
+import * as Cesium from "cesium";
+
 const ELEC_URL = 'http://mt{s}.google.cn/vt/lyrs=m@207000000&hl=zh-CN&gl=CN&src=app&x={x}&y={y}&z={z}&s=Galile';
 
 const IMG_URL = 'http://mt{s}.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali';

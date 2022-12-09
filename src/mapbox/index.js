@@ -2,10 +2,11 @@
  * @Author: zulezhe
  * @Date: 2022-07-20 14:11:20
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-07-20 15:22:12
+ * @LastEditTime: 2022-12-09 14:03:19
  * @Path: https://gitee.com/zulezhe/
  * @Description:
  */
+import * as Cesium from "cesium";
 /**
  * geoq底图类
  * @extends Cesium.UrlTemplateImageryProvider

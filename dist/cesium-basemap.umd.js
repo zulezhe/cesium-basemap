@@ -1,12 +1,13 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['cesium-basemap'] = {}));
-}(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('cesium')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'cesium'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global['cesium-basemap'] = {}, global.Cesium));
+}(this, (function (exports, Cesium) { 'use strict';
 
   /**
    * 添加百度底图服务类
    */
+
   class BmapImageryProvider {
     /**
      * 创建百度底图服务
@@ -137,24 +138,24 @@
    * @Author: zulezhe
    * @Date: 2021-07-08 08:36:43
    * @LastEditors: zulezhe
-   * @LastEditTime: 2022-07-20 14:10:53
+   * @LastEditTime: 2022-12-09 14:02:48
    * @Path: https://gitee.com/zulezhe/
-   * @Description: 
+   * @Description:
    */
-
   /**
    * 高德影像底图类
    * @extends Cesium.UrlTemplateImageryProvider
    */
+
   class AmapImageryProvider extends Cesium.UrlTemplateImageryProvider {
     /**
      * 添加高德地图底图
-     * @param {object} options 
+     * @param {object} options
      * @param {string} options.type=img 底图类型 影像底图 img 矢量底图 vec 默认 img
      * @param {string} options.minimumLevel=4
      * @param {string} options.maximumLevel=8
      * @example
-     * 
+     *
      *  var layer = new AmapImageryProvider({
      *        type: "img",
      *        minimumLevel: 4,
@@ -168,7 +169,7 @@
       maximumLevel: 18
     }) {
       super({
-        url: `https://${options.type === 'img' ? 'webst0{s}' : 'webrd02'}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=${options.type === "img" ? 6 : 8}&x={x}&y={y}&z={z}`,
+        url: `https://${options.type === "img" ? "webst0{s}" : "webrd02"}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=${options.type === "img" ? 6 : 8}&x={x}&y={y}&z={z}`,
         subdomains: ["1", "2", "3", "4"],
         minimumLevel: 3,
         maximumLevel: 18
@@ -177,10 +178,19 @@
 
   }
 
+  /*
+   * @Author: zulezhe
+   * @Date: 2021-07-08 08:36:43
+   * @LastEditors: zulezhe
+   * @LastEditTime: 2022-12-09 14:03:29
+   * @Path: https://gitee.com/zulezhe/
+   * @Description: 
+   */
   /**
    * 天地图底图类
    * @extends Cesium.WebMapTileServiceImageryProvider
    */
+
   class TdtImageryProvider extends Cesium.WebMapTileServiceImageryProvider {
     /**
      * 添加天地图底图
@@ -223,6 +233,14 @@
 
   }
 
+  /*
+   * @Author: zulezhe
+   * @Date: 2021-07-08 08:36:43
+   * @LastEditors: zulezhe
+   * @LastEditTime: 2022-12-09 14:03:15
+   * @Path: https://gitee.com/zulezhe/
+   * @Description: 
+   */
   const ELEC_URL = 'http://mt{s}.google.cn/vt/lyrs=m@207000000&hl=zh-CN&gl=CN&src=app&x={x}&y={y}&z={z}&s=Galile';
   const IMG_URL = 'http://mt{s}.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali';
   const TER_URL = 'http://mt{s}.google.cn/vt/lyrs=t@131,r@227000000&hl=zh-CN&gl=cn&x={x}&y={y}&z={z}&s=Galile';
@@ -244,15 +262,15 @@
    * @Author: zulezhe
    * @Date: 2022-07-20 14:11:20
    * @LastEditors: zulezhe
-   * @LastEditTime: 2022-07-20 14:14:53
+   * @LastEditTime: 2022-12-09 14:02:53
    * @Path: https://gitee.com/zulezhe/
    * @Description: 
    */
-
   /**
    * arcgis底图类
    * @extends Cesium.ArcGisMapServerImageryProvider
    */
+
   class ArcgisImageryProvider extends Cesium.ArcGisMapServerImageryProvider {
     /**
      * 添加arcgis地图底图
@@ -283,15 +301,15 @@
    * @Author: zulezhe
    * @Date: 2022-07-20 14:11:20
    * @LastEditors: zulezhe
-   * @LastEditTime: 2022-07-20 15:03:31
+   * @LastEditTime: 2022-12-09 14:03:07
    * @Path: https://gitee.com/zulezhe/
    * @Description: 
    */
-
   /**
    * geoq底图类
    * @extends Cesium.UrlTemplateImageryProvider
    */
+
   class GeoqImageryProvider extends Cesium.UrlTemplateImageryProvider {
     /**
      * 添加geoq地图底图
@@ -320,15 +338,15 @@
    * @Author: zulezhe
    * @Date: 2022-07-20 14:11:20
    * @LastEditors: zulezhe
-   * @LastEditTime: 2022-07-20 15:31:30
+   * @LastEditTime: 2022-12-09 14:03:23
    * @Path: https://gitee.com/zulezhe/
    * @Description: 
    */
-
   /**
    * OSM底图类
    * @extends Cesium.OpenStreetMapImageryProvider
    */
+
   class OSMImageryProvider extends Cesium.OpenStreetMapImageryProvider {
     /**
      * 添加 OSM 地图底图
@@ -361,15 +379,15 @@
    * @Author: zulezhe
    * @Date: 2022-07-20 14:11:20
    * @LastEditors: zulezhe
-   * @LastEditTime: 2022-07-20 15:22:12
+   * @LastEditTime: 2022-12-09 14:03:19
    * @Path: https://gitee.com/zulezhe/
    * @Description:
    */
-
   /**
    * geoq底图类
    * @extends Cesium.UrlTemplateImageryProvider
    */
+
   class MapboxImageryProvider extends Cesium.MapboxStyleImageryProvider {
     /**
      * 添加geoq地图底图

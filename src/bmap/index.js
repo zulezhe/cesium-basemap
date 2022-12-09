@@ -1,3 +1,4 @@
+import * as Cesium from "cesium";
 /**
  * 添加百度底图服务类
  */

@@ -1,3 +1,12 @@
+/*
+ * @Author: zulezhe
+ * @Date: 2021-07-08 08:36:43
+ * @LastEditors: zulezhe
+ * @LastEditTime: 2022-12-09 14:03:29
+ * @Path: https://gitee.com/zulezhe/
+ * @Description: 
+ */
+import * as Cesium from "cesium";
 /**
  * 天地图底图类
  * @extends Cesium.WebMapTileServiceImageryProvider

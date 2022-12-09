@@ -2,10 +2,11 @@
  * @Author: zulezhe
  * @Date: 2022-07-20 14:11:20
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-07-20 15:31:30
+ * @LastEditTime: 2022-12-09 14:03:23
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
  */
+import * as Cesium from "cesium";
 /**
  * OSM底图类
  * @extends Cesium.OpenStreetMapImageryProvider

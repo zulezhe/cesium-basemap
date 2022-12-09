@@ -1,6 +1,9 @@
+import { WebMercatorTilingScheme, Cartesian2, DeveloperError, ImageryProvider, UrlTemplateImageryProvider, WebMapTileServiceImageryProvider, ArcGisMapServerImageryProvider, OpenStreetMapImageryProvider, MapboxStyleImageryProvider } from 'cesium';
+
 /**
  * 添加百度底图服务类
  */
+
 class BmapImageryProvider {
   /**
    * 创建百度底图服务
@@ -23,9 +26,9 @@ class BmapImageryProvider {
     this._tileWidth = 256;
     this._tileHeight = 256;
     this._maximumLevel = 18;
-    this._tilingScheme = new Cesium.WebMercatorTilingScheme({
-      rectangleSouthwestInMeters: new Cesium.Cartesian2(-33554054, -33746824),
-      rectangleNortheastInMeters: new Cesium.Cartesian2(33554054, 33746824)
+    this._tilingScheme = new WebMercatorTilingScheme({
+      rectangleSouthwestInMeters: new Cartesian2(-33554054, -33746824),
+      rectangleNortheastInMeters: new Cartesian2(33554054, 33746824)
     });
     this._rectangle = this._tilingScheme.rectangle;
     this._credit = undefined;
@@ -42,7 +45,7 @@ class BmapImageryProvider {
 
   get tileWidth() {
     if (!this.ready) {
-      throw new Cesium.DeveloperError('在影像提供者准备就绪之前，不得调用 tileWidth.');
+      throw new DeveloperError('在影像提供者准备就绪之前，不得调用 tileWidth.');
     }
 
     return this._tileWidth;
@@ -50,7 +53,7 @@ class BmapImageryProvider {
 
   get tileHeight() {
     if (!this.ready) {
-      throw new Cesium.DeveloperError('在影像提供者准备就绪之前，不得调用 tileHeight.');
+      throw new DeveloperError('在影像提供者准备就绪之前，不得调用 tileHeight.');
     }
 
     return this._tileHeight;
@@ -58,7 +61,7 @@ class BmapImageryProvider {
 
   get maximumLevel() {
     if (!this.ready) {
-      throw new Cesium.DeveloperError('最大在影像提供程序准备就绪之前不得调用级别.');
+      throw new DeveloperError('最大在影像提供程序准备就绪之前不得调用级别.');
     }
 
     return this._maximumLevel;
@@ -66,7 +69,7 @@ class BmapImageryProvider {
 
   get minimumLevel() {
     if (!this.ready) {
-      throw new Cesium.DeveloperError('最小值在影像提供者准备就绪之前不得调用级别.');
+      throw new DeveloperError('最小值在影像提供者准备就绪之前不得调用级别.');
     }
 
     return 0;
@@ -74,7 +77,7 @@ class BmapImageryProvider {
 
   get tilingScheme() {
     if (!this.ready) {
-      throw new Cesium.DeveloperError('在影像提供程序准备就绪之前，不得调用切片方案.');
+      throw new DeveloperError('在影像提供程序准备就绪之前，不得调用切片方案.');
     }
 
     return this._tilingScheme;
@@ -82,7 +85,7 @@ class BmapImageryProvider {
 
   get rectangle() {
     if (!this.ready) {
-      throw new Cesium.DeveloperError('在影像提供程序准备就绪之前，不得调用矩形.');
+      throw new DeveloperError('在影像提供程序准备就绪之前，不得调用矩形.');
     }
 
     return this._rectangle;
@@ -113,7 +116,7 @@ class BmapImageryProvider {
 
   requestImage(x, y, level) {
     if (!this.ready) {
-      throw new Cesium.DeveloperError('请求在影像提供程序准备就绪之前不得调用影像.');
+      throw new DeveloperError('请求在影像提供程序准备就绪之前不得调用影像.');
     }
 
     let xTiles = this._tilingScheme.getNumberOfXTilesAtLevel(level);
@@ -122,7 +125,7 @@ class BmapImageryProvider {
 
     let url = this._url.replace('{x}', x - xTiles / 2).replace('{y}', yTiles / 2 - y - 1).replace('{z}', level).replace('{s}', 1).replace('{style}', this._type);
 
-    return Cesium.ImageryProvider.loadImage(this, url);
+    return ImageryProvider.loadImage(this, url);
   }
 
 }
@@ -131,24 +134,24 @@ class BmapImageryProvider {
  * @Author: zulezhe
  * @Date: 2021-07-08 08:36:43
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-07-20 14:10:53
+ * @LastEditTime: 2022-12-09 14:02:48
  * @Path: https://gitee.com/zulezhe/
- * @Description: 
+ * @Description:
  */
-
 /**
  * 高德影像底图类
  * @extends Cesium.UrlTemplateImageryProvider
  */
-class AmapImageryProvider extends Cesium.UrlTemplateImageryProvider {
+
+class AmapImageryProvider extends UrlTemplateImageryProvider {
   /**
    * 添加高德地图底图
-   * @param {object} options 
+   * @param {object} options
    * @param {string} options.type=img 底图类型 影像底图 img 矢量底图 vec 默认 img
    * @param {string} options.minimumLevel=4
    * @param {string} options.maximumLevel=8
    * @example
-   * 
+   *
    *  var layer = new AmapImageryProvider({
    *        type: "img",
    *        minimumLevel: 4,
@@ -162,7 +165,7 @@ class AmapImageryProvider extends Cesium.UrlTemplateImageryProvider {
     maximumLevel: 18
   }) {
     super({
-      url: `https://${options.type === 'img' ? 'webst0{s}' : 'webrd02'}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=${options.type === "img" ? 6 : 8}&x={x}&y={y}&z={z}`,
+      url: `https://${options.type === "img" ? "webst0{s}" : "webrd02"}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=${options.type === "img" ? 6 : 8}&x={x}&y={y}&z={z}`,
       subdomains: ["1", "2", "3", "4"],
       minimumLevel: 3,
       maximumLevel: 18
@@ -171,11 +174,20 @@ class AmapImageryProvider extends Cesium.UrlTemplateImageryProvider {
 
 }
 
+/*
+ * @Author: zulezhe
+ * @Date: 2021-07-08 08:36:43
+ * @LastEditors: zulezhe
+ * @LastEditTime: 2022-12-09 14:03:29
+ * @Path: https://gitee.com/zulezhe/
+ * @Description: 
+ */
 /**
  * 天地图底图类
  * @extends Cesium.WebMapTileServiceImageryProvider
  */
-class TdtImageryProvider extends Cesium.WebMapTileServiceImageryProvider {
+
+class TdtImageryProvider extends WebMapTileServiceImageryProvider {
   /**
    * 添加天地图底图
    * @param {object} options
@@ -217,11 +229,19 @@ class TdtImageryProvider extends Cesium.WebMapTileServiceImageryProvider {
 
 }
 
+/*
+ * @Author: zulezhe
+ * @Date: 2021-07-08 08:36:43
+ * @LastEditors: zulezhe
+ * @LastEditTime: 2022-12-09 14:03:15
+ * @Path: https://gitee.com/zulezhe/
+ * @Description: 
+ */
 const ELEC_URL = 'http://mt{s}.google.cn/vt/lyrs=m@207000000&hl=zh-CN&gl=CN&src=app&x={x}&y={y}&z={z}&s=Galile';
 const IMG_URL = 'http://mt{s}.google.cn/vt/lyrs=s&hl=zh-CN&x={x}&y={y}&z={z}&s=Gali';
 const TER_URL = 'http://mt{s}.google.cn/vt/lyrs=t@131,r@227000000&hl=zh-CN&gl=cn&x={x}&y={y}&z={z}&s=Galile';
 
-class GoogleImageryProvider extends Cesium.UrlTemplateImageryProvider {
+class GoogleImageryProvider extends UrlTemplateImageryProvider {
   constructor(options = {}) {
     options['url'] = options.style === 'img' ? IMG_URL : options.style === 'ter' ? TER_URL : ELEC_URL;
 
@@ -238,16 +258,16 @@ class GoogleImageryProvider extends Cesium.UrlTemplateImageryProvider {
  * @Author: zulezhe
  * @Date: 2022-07-20 14:11:20
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-07-20 14:14:53
+ * @LastEditTime: 2022-12-09 14:02:53
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
  */
-
 /**
  * arcgis底图类
  * @extends Cesium.ArcGisMapServerImageryProvider
  */
-class ArcgisImageryProvider extends Cesium.ArcGisMapServerImageryProvider {
+
+class ArcgisImageryProvider extends ArcGisMapServerImageryProvider {
   /**
    * 添加arcgis地图底图
    * @param {object} options 
@@ -277,16 +297,16 @@ class ArcgisImageryProvider extends Cesium.ArcGisMapServerImageryProvider {
  * @Author: zulezhe
  * @Date: 2022-07-20 14:11:20
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-07-20 15:03:31
+ * @LastEditTime: 2022-12-09 14:03:07
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
  */
-
 /**
  * geoq底图类
  * @extends Cesium.UrlTemplateImageryProvider
  */
-class GeoqImageryProvider extends Cesium.UrlTemplateImageryProvider {
+
+class GeoqImageryProvider extends UrlTemplateImageryProvider {
   /**
    * 添加geoq地图底图
    * @param {object} options 
@@ -314,16 +334,16 @@ class GeoqImageryProvider extends Cesium.UrlTemplateImageryProvider {
  * @Author: zulezhe
  * @Date: 2022-07-20 14:11:20
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-07-20 15:31:30
+ * @LastEditTime: 2022-12-09 14:03:23
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
  */
-
 /**
  * OSM底图类
  * @extends Cesium.OpenStreetMapImageryProvider
  */
-class OSMImageryProvider extends Cesium.OpenStreetMapImageryProvider {
+
+class OSMImageryProvider extends OpenStreetMapImageryProvider {
   /**
    * 添加 OSM 地图底图
    * @param {object} options 
@@ -355,16 +375,16 @@ class OSMImageryProvider extends Cesium.OpenStreetMapImageryProvider {
  * @Author: zulezhe
  * @Date: 2022-07-20 14:11:20
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-07-20 15:22:12
+ * @LastEditTime: 2022-12-09 14:03:19
  * @Path: https://gitee.com/zulezhe/
  * @Description:
  */
-
 /**
  * geoq底图类
  * @extends Cesium.UrlTemplateImageryProvider
  */
-class MapboxImageryProvider extends Cesium.MapboxStyleImageryProvider {
+
+class MapboxImageryProvider extends MapboxStyleImageryProvider {
   /**
    * 添加geoq地图底图
    * @param {object} options
