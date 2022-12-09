@@ -1,19 +1,6 @@
 name: GitHub Actions Build and Deploy Demo
 on: [push]
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v1
-
-      - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v2
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: root
-          BUILD_SCRIPT: npm install && npm run build:es && npm run demo:build
   # 发布 npm
   publish-npm:
     runs-on: ubuntu-latest
@@ -23,9 +10,8 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
       # 此为npm的发布命令
-      - run: npm publish
+      - run: npm publish --access public 
         # npm token 秘钥，需要在 npm 内申请并到github上绑定，绑定在项目设置内
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
