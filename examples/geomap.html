@@ -2,18 +2,18 @@
  * @Author: zulezhe
  * @Date: 2022-07-20 09:02:55
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-12-09 09:02:44
+ * @LastEditTime: 2022-12-09 11:49:08
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>百度底图服务</title>
+  <title>cesium 智图 底图</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.98.1/Build/Cesium/Widgets/widgets.css">
   <script src="https://cdn.jsdelivr.net/npm/cesium@1.98.1/Build/Cesium/Cesium.js"></script>
   <style>
@@ -29,15 +29,14 @@
 <body>
   <div id="cesium-container"></div>
   <script type="module">
-    import { BmapImageryProvider } from "../dist/zu-cesium-basemap.esm.js";
+    import { GeoqImageryProvider } from "https://unpkg.com/@zcesium/cesium-basemap@1.0.0/dist/zu-cesium-basemap.esm.js";
     const viewer = new Cesium.Viewer("cesium-container", {
-      imageryProvider: new BmapImageryProvider({
+      imageryProvider: new GeoqImageryProvider({
         type: "img",
         minimumLevel: 4,
         maximumLevel: 18,
-        crs: 'WGS84'
-      })
-    })
+      }),
+    });
   </script>
 </body>
 

@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-10-29 15:29:13
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-12-09 11:10:13
+ * @LastEditTime: 2022-12-09 11:53:06
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
  */
@@ -33,7 +33,7 @@ module.exports = {
       includeDate: false,
       useLongnameInNav: true,
       staticFiles: {
-        include: ['./docs/static'],
+        include: ['static'],
       },
     },
   },
@@ -41,7 +41,7 @@ module.exports = {
   opts: {
     template: 'node_modules/docdash',
     encoding: 'utf8',
-    destination: './docs/api/',
+    destination: './docs/',
     recurse: true,
     verbose: true,
   },

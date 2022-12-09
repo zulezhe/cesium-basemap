@@ -8,9 +8,20 @@ cesium 的底图加载插件
 
 ### 安装
 
++ esModule使用
+
 ```bash
     npm install @zcesium/cesium-basemap
+    or
+    yarn add @zcesium/cesium-basemap
 ```
++ 浏览器使用
+
+```html
+<script src="https://unpkg.com/@zcesium/cesium-basemap@1.0.0/dist/cesium-basemap.min.js"></script>
+
+```
+
 
 ### 使用
 
@@ -49,7 +60,7 @@ const viewer = new Cesium.Viewer("cesium-container", {
 });
 ```
 
-[![](./static//images/amap.jpg#=1000x800)](https://zulezhe.github.io/cesium-basemap/amap.html)
+[![](./static/amap.jpg#=1000x800)](https://zulezhe.github.io/cesium-basemap/examples/amap.html)
 
 - 添加百度底图
 
@@ -65,7 +76,7 @@ const viewer = new Cesium.Viewer("cesium-container", {
   }),
 });
 ```
-[![](./static//images/geoq.jpg#=1000x800)](https://zulezhe.github.io/cesium-basemap/geomap.html)
+[![](./static/geoq.jpg#=1000x800)](https://zulezhe.github.io/cesium-basemap/examples/geomap.html)
 - 添加 mapbox 底图
 
 - 添加 arcgis 底图
@@ -82,9 +93,12 @@ const viewer = new Cesium.Viewer("cesium-container", {
 });
 ```
 
-[![](./static//images/osm.jpg#=1000x800)](https://zulezhe.github.io/cesium-basemap/osmmap.html)
+[![](./static/osm.jpg#=1000x800)](https://zulezhe.github.io/cesium-basemap/examples/osmmap.html)
 
 - 添加单张图片底图
 
 - 添加自定义底图
 
+## API文档
+
+[文档](https://zulezhe.github.io/cesium-basemap/docs/index.html)
