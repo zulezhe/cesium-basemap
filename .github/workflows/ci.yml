@@ -16,7 +16,6 @@ jobs:
           BUILD_SCRIPT: npm install && npm run build:es && npm run demo:build
   # 发布 npm
   publish-npm:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
