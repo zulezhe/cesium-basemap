@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-10-29 15:29:13
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-12-09 09:07:36
+ * @LastEditTime: 2022-12-09 11:10:13
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
  */
@@ -61,16 +61,16 @@ module.exports = {
       'Interfaces',
     ],
     openGraph: {
-      title: 'zu-cesium-basemap',
+      title: '@zcesium/cesium-basemap',
       type: 'website',
       image: 'https://cloud.githubusercontent.com/assets/447956/13398144/4dde7f36-defd-11e5-8909-1a9013302cb9.png',
-      site_name: 'zu-cesium-basemap',
-      url: 'http://zulezhe.github.io/zu-cesium-basemap/',
+      site_name: 'cesium-basemap',
+      url: 'http://zulezhe.github.io/cesium-basemap/',
     },
     meta: {
-      title: 'zu-cesium-basemap',
-      description: 'cesium公开底图服类,更方便添加/切换底图',
-      keyword: 'cesium, zu-cesium-basemap,cesium底图',
+      title: 'cesium-basemap',
+      description: 'cesium公开底图服类,更方便添加/切换底图 cesium底图',
+      keyword: 'cesium, cesium-basemap,cesium底图',
     },
     search: true,
     collapse: true,
@@ -79,7 +79,7 @@ module.exports = {
     scripts: ['./index.js'], //把自定义的静态资源注入到html中
     menu: {
       源码: {
-        href: 'https://github.com/zulezhe/zu-cesium-basemap',
+        href: 'https://github.com/zulezhe/cesium-basemap',
         target: '_blank',
         class: 'menu-item',
         id: 'repository',

@@ -1,6 +1,6 @@
 {
-  "name": "zu-cesium-basemap",
-  "version": "1.0.2",
+  "name": "@zcesium/cesium-basemap",
+  "version": "1.0.0",
   "description": "cesium底图服务",
   "keywords": [
     "cesium",
@@ -8,34 +8,37 @@
     "cesium-map",
     "cesium basemap"
   ],
+  "files": [
+    "dist/*",
+    "*.json"
+  ],
   "private": false,
   "author": "zulezhe",
   "license": "MIT",
-  "main": "dist/zu-cesium-basemap.umd.js",
-  "module": "dist/zu-cesium-basemap.esm.js",
-  "unpkg": "dist/zu-cesium-basemap.min.js",
+  "main": "dist/cesium-basemap.umd.js",
+  "module": "dist/cesium-basemap.esm.js",
+  "unpkg": "dist/cesium-basemap.min.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.es.js --watch",
     "build": "cross-env NODE_ENV=production npm run build:browser && npm run build:es && npm run build:umd && npm run doc",
     "test": "npm run test:unit",
-    "build:browser": "rollup --config build/rollup.config.browser.js", 
+    "build:browser": "rollup --config build/rollup.config.browser.js",
     "build:es": "rollup --config build/rollup.config.es.js",
     "build:umd": "rollup --config build/rollup.config.umd.js",
     "doc": "rimraf docs/api && jsdoc -c ./docs/conf.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zulezhe/zu-cesium-basemap.git"
+    "url": "https://github.com/zulezhe/cesium-basemap.git"
   },
   "bugs": {
-    "url": "https://github.com/zulezhe/zu-cesium-basemap/issues"
+    "url": "https://github.com/zulezhe/cesium-basemap/issues"
   },
-  "homepage": "https://github.com/zulezhe/zu-cesium-basemap",
-  "dependencies": {
-    "jsdoc": "^3.6.7"
-  },
+  "homepage": "https://github.com/zulezhe/cesium-basemap",
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "jsdoc": "^3.6.7",
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/polyfill": "^7.11.5",
     "@babel/preset-env": "^7.11.5",

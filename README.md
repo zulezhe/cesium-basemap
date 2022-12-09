@@ -1,4 +1,4 @@
-# zu-cesium-basemap
+# @zcesium/cesium-basemap
 
 ## 描述
 
@@ -8,8 +8,8 @@ cesium 的底图加载插件
 
 ### 安装
 
-```powershell
-    npm install zu-cesium-basemap
+```bash
+    npm install @zcesium/cesium-basemap
 ```
 
 ### 使用
@@ -17,7 +17,7 @@ cesium 的底图加载插件
 - 添加天地图
 
 ```js
-import { TdtImageryProvider } from "zu-cesium-basemap";
+import { TdtImageryProvider } from "@zcesium/cesium-basemap";
 // 加载天地图
 let imgLayer = {
   style: "default",
@@ -39,7 +39,7 @@ viewer.imageryLayers.addImageryProvider(new TdtImageryProvider(ciaLayer));
 - 添加高德底图
 
 ```js
-import { AmapImageryProvider } from "./dist/zu-cesium-basemap.esm.js";
+import { AmapImageryProvider } from "@zcesium/cesium-basemap";
 const viewer = new Cesium.Viewer("cesium-container", {
   imageryProvider: new AmapImageryProvider({
     type: "img",
@@ -49,14 +49,14 @@ const viewer = new Cesium.Viewer("cesium-container", {
 });
 ```
 
-[![](./static//images/amap.jpg#=1000x800)](https://zulezhe.github.io/zu-cesium-basemap/amap.html)
+[![](./static//images/amap.jpg#=1000x800)](https://zulezhe.github.io/cesium-basemap/amap.html)
 
 - 添加百度底图
 
 - 添加智图
 
 ```js
-import { GeoqImageryProvider } from "zu-cesium-basemap";
+import { GeoqImageryProvider } from "@zcesium/cesium-basemap";
 const viewer = new Cesium.Viewer("cesium-container", {
   imageryProvider: new GeoqImageryProvider({
     type: "img",
@@ -65,7 +65,7 @@ const viewer = new Cesium.Viewer("cesium-container", {
   }),
 });
 ```
-[![](./static//images/geoq.jpg#=1000x800)](https://zulezhe.github.io/zu-cesium-basemap/geomap.html)
+[![](./static//images/geoq.jpg#=1000x800)](https://zulezhe.github.io/cesium-basemap/geomap.html)
 - 添加 mapbox 底图
 
 - 添加 arcgis 底图
@@ -73,7 +73,7 @@ const viewer = new Cesium.Viewer("cesium-container", {
 - 添加 osm 底图
 
 ```js
-import { OSMImageryProvider } from "zu-cesium-basemap";
+import { OSMImageryProvider } from "@zcesium/cesium-basemap";
 
 const viewer = new Cesium.Viewer("cesium-container", {
   imageryProvider: new OSMImageryProvider({
@@ -82,12 +82,9 @@ const viewer = new Cesium.Viewer("cesium-container", {
 });
 ```
 
-[![](./static//images/osm.jpg#=1000x800)](https://zulezhe.github.io/zu-cesium-basemap/osmmap.html)
+[![](./static//images/osm.jpg#=1000x800)](https://zulezhe.github.io/cesium-basemap/osmmap.html)
 
 - 添加单张图片底图
 
 - 添加自定义底图
 
-## api 文档
-
-[API](./api/index.html)

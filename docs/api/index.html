@@ -3,20 +3,20 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - zu-cesium-basemap</title>
+    <title>Home - cesium-basemap</title>
     
-    <meta name="description" content="cesium公开底图服类,更方便添加/切换底图" />
+    <meta name="description" content="cesium公开底图服类,更方便添加/切换底图 cesium底图" />
     
-        <meta name="keywords" content="cesium, zu-cesium-basemap,cesium底图" />
-        <meta name="keyword" content="cesium, zu-cesium-basemap,cesium底图" />
+        <meta name="keywords" content="cesium, cesium-basemap,cesium底图" />
+        <meta name="keyword" content="cesium, cesium-basemap,cesium底图" />
     
     
     
-    <meta property="og:title" content="zu-cesium-basemap"/>
+    <meta property="og:title" content="@zcesium/cesium-basemap"/>
     <meta property="og:type" content="website"/>
     <meta property="og:image" content="https://cloud.githubusercontent.com/assets/447956/13398144/4dde7f36-defd-11e5-8909-1a9013302cb9.png"/>
-    <meta property="og:site_name" content="zu-cesium-basemap"/>
-    <meta property="og:url" content="http://zulezhe.github.io/zu-cesium-basemap/"/>
+    <meta property="og:site_name" content="cesium-basemap"/>
+    <meta property="og:url" content="http://zulezhe.github.io/cesium-basemap/"/>
     
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -41,7 +41,7 @@
     
     <input type="text" id="nav-search" placeholder="Search" />
     
-    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/zulezhe/zu-cesium-basemap" target="_blank" class="menu-item" id="repository" >源码</a></h2><h3>Classes</h3><ul><li><a href="AmapImageryProvider.html">AmapImageryProvider</a></li><li><a href="ArcgisImageryProvider.html">ArcgisImageryProvider</a></li><li><a href="BmapImageryProvider.html">BmapImageryProvider</a><ul class='methods'><li data-type='method' style='display: none;'><a href="BmapImageryProvider.html#requestImage">requestImage</a></li></ul></li><li><a href="GeoqImageryProvider.html">GeoqImageryProvider</a></li><li><a href="MapboxImageryProvider.html">MapboxImageryProvider</a></li><li><a href="OSMImageryProvider.html">OSMImageryProvider</a></li><li><a href="TdtImageryProvider.html">TdtImageryProvider</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/zulezhe/cesium-basemap" target="_blank" class="menu-item" id="repository" >源码</a></h2><h3>Classes</h3><ul><li><a href="AmapImageryProvider.html">AmapImageryProvider</a></li><li><a href="ArcgisImageryProvider.html">ArcgisImageryProvider</a></li><li><a href="BmapImageryProvider.html">BmapImageryProvider</a><ul class='methods'><li data-type='method' style='display: none;'><a href="BmapImageryProvider.html#requestImage">requestImage</a></li></ul></li><li><a href="GeoqImageryProvider.html">GeoqImageryProvider</a></li><li><a href="MapboxImageryProvider.html">MapboxImageryProvider</a></li><li><a href="OSMImageryProvider.html">OSMImageryProvider</a></li><li><a href="TdtImageryProvider.html">TdtImageryProvider</a></li></ul>
 </nav>
 
 <div id="main">
@@ -71,18 +71,18 @@
 
 
     <section class="readme usertext">
-        <article><h1 id="zu-cesium-basemap">zu-cesium-basemap</h1>
+        <article><h1 id="%40zcesium%2Fcesium-basemap">@zcesium/cesium-basemap</h1>
 <h2 id="%E6%8F%8F%E8%BF%B0">描述</h2>
 <p>cesium 的底图加载插件</p>
 <h2 id="%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">使用方法</h2>
 <h3 id="%E5%AE%89%E8%A3%85">安装</h3>
-<pre class="prettyprint source lang-powershell"><code>    npm install zu-cesium-basemap
+<pre class="prettyprint source lang-bash"><code>    npm install @zcesium/cesium-basemap
 </code></pre>
 <h3 id="%E4%BD%BF%E7%94%A8">使用</h3>
 <ul>
 <li>添加天地图</li>
 </ul>
-<pre class="prettyprint source lang-js"><code>import { TdtImageryProvider } from &quot;zu-cesium-basemap&quot;;
+<pre class="prettyprint source lang-js"><code>import { TdtImageryProvider } from &quot;@zcesium/cesium-basemap&quot;;
 // 加载天地图
 let imgLayer = {
   style: &quot;default&quot;,
@@ -103,7 +103,7 @@ viewer.imageryLayers.addImageryProvider(new TdtImageryProvider(ciaLayer));
 <ul>
 <li>添加高德底图</li>
 </ul>
-<pre class="prettyprint source lang-js"><code>import { AmapImageryProvider } from &quot;./dist/zu-cesium-basemap.esm.js&quot;;
+<pre class="prettyprint source lang-js"><code>import { AmapImageryProvider } from &quot;@zcesium/cesium-basemap&quot;;
 const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
   imageryProvider: new AmapImageryProvider({
     type: &quot;img&quot;,
@@ -112,7 +112,7 @@ const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
   }),
 });
 </code></pre>
-<p><a href="https://zulezhe.github.io/zu-cesium-basemap/amap.html"><img src="./static//images/amap.jpg#=1000x800" alt=""></a></p>
+<p><a href="https://zulezhe.github.io/cesium-basemap/amap.html"><img src="./static//images/amap.jpg#=1000x800" alt=""></a></p>
 <ul>
 <li>
 <p>添加百度底图</p>
@@ -121,7 +121,7 @@ const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
 <p>添加智图</p>
 </li>
 </ul>
-<pre class="prettyprint source lang-js"><code>import { GeoqImageryProvider } from &quot;zu-cesium-basemap&quot;;
+<pre class="prettyprint source lang-js"><code>import { GeoqImageryProvider } from &quot;@zcesium/cesium-basemap&quot;;
 const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
   imageryProvider: new GeoqImageryProvider({
     type: &quot;img&quot;,
@@ -130,7 +130,7 @@ const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
   }),
 });
 </code></pre>
-<p><a href="https://zulezhe.github.io/zu-cesium-basemap/geomap.html"><img src="./static//images/geoq.jpg#=1000x800" alt=""></a></p>
+<p><a href="https://zulezhe.github.io/cesium-basemap/geomap.html"><img src="./static//images/geoq.jpg#=1000x800" alt=""></a></p>
 <ul>
 <li>
 <p>添加 mapbox 底图</p>
@@ -142,7 +142,7 @@ const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
 <p>添加 osm 底图</p>
 </li>
 </ul>
-<pre class="prettyprint source lang-js"><code>import { OSMImageryProvider } from &quot;zu-cesium-basemap&quot;;
+<pre class="prettyprint source lang-js"><code>import { OSMImageryProvider } from &quot;@zcesium/cesium-basemap&quot;;
 
 const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
   imageryProvider: new OSMImageryProvider({
@@ -150,7 +150,7 @@ const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
   }),
 });
 </code></pre>
-<p><a href="https://zulezhe.github.io/zu-cesium-basemap/osmmap.html"><img src="./static//images/osm.jpg#=1000x800" alt=""></a></p>
+<p><a href="https://zulezhe.github.io/cesium-basemap/osmmap.html"><img src="./static//images/osm.jpg#=1000x800" alt=""></a></p>
 <ul>
 <li>
 <p>添加单张图片底图</p>
@@ -158,9 +158,7 @@ const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
 <li>
 <p>添加自定义底图</p>
 </li>
-</ul>
-<h2 id="api-%E6%96%87%E6%A1%A3">api 文档</h2>
-<p><a href="./api/index.html">API</a></p></article>
+</ul></article>
     </section>
 
 
