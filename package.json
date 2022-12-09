@@ -1,5 +1,5 @@
 {
-  "name": "@zu/cesium-basemap",
+  "name": "zu-cesium-basemap",
   "version": "1.0.2",
   "description": "cesium底图服务",
   "keywords": [
