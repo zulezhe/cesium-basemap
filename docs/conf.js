@@ -2,7 +2,7 @@
  * @Author: zulezhe
  * @Date: 2022-10-29 15:29:13
  * @LastEditors: zulezhe
- * @LastEditTime: 2022-10-29 15:58:25
+ * @LastEditTime: 2022-12-09 09:07:36
  * @Path: https://gitee.com/zulezhe/
  * @Description: 
  */
@@ -14,7 +14,7 @@ module.exports = {
   },
   // 指定输入文件
   source: {
-    include: ['src/', './README.md'], //包含
+    include: ['src/', 'README.md'], //包含
     exclude: ['myProject/lib/ignore.js'], //忽略
     includePattern: '.+\\.js(doc)?$', //包含目录下以.js或者.jsdoc结尾的文件将被扫描
     excludePattern: '(^|\\/|\\\\)_', //下划线开头的文件（或以下划线开头的目录下的所有文件）将被忽略

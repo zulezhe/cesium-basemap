@@ -78,41 +78,60 @@
 <h3 id="%E5%AE%89%E8%A3%85">安装</h3>
 <pre class="prettyprint source lang-powershell"><code>    npm install zu-cesium-basemap
 </code></pre>
-<h3 id="%E6%B3%A8%E5%86%8C">注册</h3>
-<pre class="prettyprint source lang-javascript"><code>import 'zu-cesium-basemap';
-</code></pre>
 <h3 id="%E4%BD%BF%E7%94%A8">使用</h3>
 <ul>
 <li>添加天地图</li>
 </ul>
-<pre class="prettyprint source lang-js"><code>import { TdtImageryProvider } from 'zu-cesium-basemap';
+<pre class="prettyprint source lang-js"><code>import { TdtImageryProvider } from &quot;zu-cesium-basemap&quot;;
 // 加载天地图
 let imgLayer = {
-  style: 'default',
-  layer: 'img_w', //影像墨卡托投影底图
-  type: 'img',
-  name: '图层',
-  key: 'you key',
+  style: &quot;default&quot;,
+  layer: &quot;img_w&quot;, //影像墨卡托投影底图
+  type: &quot;img&quot;,
+  name: &quot;图层&quot;,
+  key: &quot;you key&quot;,
 };
 viewer.imageryLayers.addImageryProvider(new TdtImageryProvider(imgLayer));
 var ciaLayer = {
-  layer: 'cia_w', //影像注记墨卡托投影
-  style: 'default',
-  type: 'cia',
-  key: 'you key',
+  layer: &quot;cia_w&quot;, //影像注记墨卡托投影
+  style: &quot;default&quot;,
+  type: &quot;cia&quot;,
+  key: &quot;you key&quot;,
 };
 viewer.imageryLayers.addImageryProvider(new TdtImageryProvider(ciaLayer));
 </code></pre>
 <ul>
-<li>
-<p>添加高德底图</p>
-</li>
+<li>添加高德底图</li>
+</ul>
+<pre class="prettyprint source lang-js"><code>import { AmapImageryProvider } from &quot;./dist/zu-cesium-basemap.esm.js&quot;;
+const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
+  imageryProvider: new AmapImageryProvider({
+    type: &quot;img&quot;,
+    minimumLevel: 4,
+    maximumLevel: 18,
+  }),
+});
+</code></pre>
+<p><a href="https://zulezhe.github.io/zu-cesium-basemap/amap.html"><img src="./static//images/amap.jpg#=1000x800" alt=""></a></p>
+<ul>
 <li>
 <p>添加百度底图</p>
 </li>
 <li>
 <p>添加智图</p>
 </li>
+</ul>
+<pre class="prettyprint source lang-js"><code>import { GeoqImageryProvider } from &quot;zu-cesium-basemap&quot;;
+const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
+  imageryProvider: new GeoqImageryProvider({
+    type: &quot;img&quot;,
+    minimumLevel: 4,
+    maximumLevel: 18,
+  }),
+});
+</code></pre>
+<p><a href="https://zulezhe.github.io/zu-cesium-basemap/geomap.html"><img src="./static//images/geoq.jpg#=1000x800" alt=""></a></p>
+<ul>
 <li>
 <p>添加 mapbox 底图</p>
 </li>
@@ -122,13 +141,26 @@ viewer.imageryLayers.addImageryProvider(new TdtImageryProvider(ciaLayer));
 <li>
 <p>添加 osm 底图</p>
 </li>
+</ul>
+<pre class="prettyprint source lang-js"><code>import { OSMImageryProvider } from &quot;zu-cesium-basemap&quot;;
+
+const viewer = new Cesium.Viewer(&quot;cesium-container&quot;, {
+  imageryProvider: new OSMImageryProvider({
+    type: &quot;vec&quot;,
+  }),
+});
+</code></pre>
+<p><a href="https://zulezhe.github.io/zu-cesium-basemap/osmmap.html"><img src="./static//images/osm.jpg#=1000x800" alt=""></a></p>
+<ul>
 <li>
 <p>添加单张图片底图</p>
 </li>
 <li>
 <p>添加自定义底图</p>
 </li>
-</ul></article>
+</ul>
+<h2 id="api-%E6%96%87%E6%A1%A3">api 文档</h2>
+<p><a href="./api/index.html">API</a></p></article>
     </section>
 
 

@@ -1,5 +1,5 @@
 {
-  "name": "zu-cesium-basemap",
+  "name": "@zu/cesium-basemap",
   "version": "1.0.2",
   "description": "cesium底图服务",
   "keywords": [
@@ -18,14 +18,14 @@
     "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.es.js --watch",
     "build": "cross-env NODE_ENV=production npm run build:browser && npm run build:es && npm run build:umd && npm run doc",
     "test": "npm run test:unit",
-    "build:browser": "rollup --config build/rollup.config.browser.js",
+    "build:browser": "rollup --config build/rollup.config.browser.js", 
     "build:es": "rollup --config build/rollup.config.es.js",
     "build:umd": "rollup --config build/rollup.config.umd.js",
-    "doc": "cp -r dist docs && cp README.md docs/README.md && jsdoc -c ./docs/conf.js"
+    "doc": "rimraf docs/api && jsdoc -c ./docs/conf.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/zulezhe/zu-cesium-basemap.git" 
+    "url": "https://github.com/zulezhe/zu-cesium-basemap.git"
   },
   "bugs": {
     "url": "https://github.com/zulezhe/zu-cesium-basemap/issues"
@@ -45,6 +45,8 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "cross-env": "^7.0.2",
     "docdash": "^1.2.0",
+    "ncp": "^2.0.0",
+    "rimraf": "^3.0.2",
     "rollup": "^2.28.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
