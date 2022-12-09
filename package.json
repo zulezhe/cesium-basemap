@@ -1,6 +1,6 @@
 {
   "name": "@zcesium/cesium-basemap",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "cesium底图服务",
   "keywords": [
     "cesium",
